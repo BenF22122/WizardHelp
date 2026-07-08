@@ -286,7 +286,7 @@
 
     <header>
         <div class="logo-area">
-            <img src="https://raw.githubusercontent.com/BenF22122/WizardHelp/refs/heads/main/Master%20logo.png" alt="Wizard of the Scrying Tower Logo" class="logo-img">
+            <img src="https://raw.githubusercontent.com/BenF22122/WizardHelp/main/Master%20logo.png" alt="Wizard of the Scrying Tower Logo" class="logo-img">
             <div class="logo-text">Wizard of the Scrying Tower</div>
         </div>
         <nav>
@@ -294,6 +294,7 @@
                 <li><a href="#download">Download</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#help">Help</a></li>
+               <!-- <li><a href="#User Guide">User Guide</a></li> -->
             </ul>
         </nav>
     </header>
@@ -351,13 +352,13 @@
             </div>
 
             <div class="faq-item">
-                <h4>What operating systems are supported?</h4>
-                <p>Currently, Wizard of the Scrying Tower supports Windows 10 & 11.</p>
+                <h4>Why isn't the Wizard signed?</h4>
+                <p>Wizard of the Scrying Tower is a new project, and code‑signing certificates require a verified publisher identity and a reputation history. As the software gains real‑world usage, a trusted digital signature will be implemented to remove SmartScreen warnings and provide additional security assurance. </p>
             </div>
 
             <div class="faq-item">
-                <h4>Why isn't the Wizard signed?</h4>
-                <p>Wizard of the Scrying Tower is a new project, and code‑signing certificates require a verified publisher identity and a reputation history. As the software gains real‑world usage, a trusted digital signature will be implemented to remove SmartScreen warnings and provide additional security assurance. </p>
+                <h4>What operating systems are supported?</h4>
+                <p>Currently, Wizard of the Scrying Tower supports Windows 10 & 11.</p>
             </div>
         </section>
 
@@ -366,6 +367,26 @@
     <footer>
         <p>&copy; 2026 Wizard of the Scrying Tower systems </p>
     </footer>
+
+<script>
+    // Seasonal logo swap
+    const logoElements = document.querySelectorAll('.logo-img, .hero-logo');
+    const month = new Date().getMonth(); // 0 = Jan, 9 = Oct, 11 = Dec
+
+    let seasonalLogo = "https://raw.githubusercontent.com/BenF22122/WizardHelp/main/Master%20logo.png";
+
+    if (month === 9) { 
+        // October → Halloween
+        seasonalLogo = "https://raw.githubusercontent.com/BenF22122/WizardHelp/refs/heads/main/Halloween.png";
+    } 
+    else if (month === 11) { 
+        // December → Santa
+        seasonalLogo = "https://raw.githubusercontent.com/BenF22122/WizardHelp/refs/heads/main/Santa.png";
+    }
+
+    logoElements.forEach(img => img.src = seasonalLogo);
+</script>
+
 
 </body>
 </html>
