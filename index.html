@@ -304,6 +304,29 @@
             .tier-container { flex-direction: column; align-items: center; }
             .card { width: 100%; max-width: 360px; }
         }
+        /* Wizard-themed dropdown */
+.os-select {
+    padding: 10px 14px;
+    border-radius: 8px;
+    background-color: var(--bg-card);
+    color: var(--text-light);
+    border: 1px solid rgba(79, 172, 254, 0.4);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.os-select:hover {
+    border-color: var(--magic-glow);
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.4);
+}
+
+.os-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 12px rgba(243, 156, 18, 0.4);
+}
+
     </style>
 </head>
 <body>
@@ -342,8 +365,9 @@
                    and plain-English explanations for what is going wrong with your system or network.</p>
 
                 <!-- APPRENTICE DOWNLOAD LINK -->
-                <a href="https://github.com/BenF22122/wizardscryer.com/releases/download/WizardAprrentice/WizardInstallerAppren.zip" 
-                   class="btn btn-apprentice">Download Apprentice</a>
+                <a id="download-apprentice" 
+   href="https://github.com/BenF22122/wizardscryer.com/releases/download/WizardAprrentice/WizardInstallerAppren.zip" 
+   class="btn btn-apprentice">Download Apprentice</a>
             </div>
 
             <div class="card master"> 
@@ -353,13 +377,23 @@
                 and command-line automation tools.</p>
 
                 <!-- MASTER DOWNLOAD LINK -->
-                <a href="https://github.com/BenF22122/wizardscryer.com/releases/download/WizardMaster/WizardInstallerMaster.zip" 
-                   class="btn btn-master">Download Master Edition</a>
+                <a id="download-master" 
+   href="https://github.com/BenF22122/wizardscryer.com/releases/download/WizardMaster/WizardInstallerMaster.zip" 
+   class="btn btn-master">Download Master Edition</a>
             </div>
 
         </div>
         <br>
-         <center><p>Linux build coming soon</p></center>
+        <div style="margin-top: 30px;">
+    <label for="os-select" style="color: var(--text-muted); font-size: 1rem;">
+        Select Operating System:
+    </label>
+    <select id="os-select" class="os-select">
+        <option value="windows">🪟Windows</option>
+        <option value="linux">🐧Linux</option>
+    </select>
+</div>
+
     </section>
 
     <div class="info-container">
@@ -397,7 +431,7 @@
 
             <div class="faq-item">
                 <h4>What operating systems are supported?</h4>
-                <p>Currently, Wizard of the Scrying Tower supports Windows 10 & 11.</p>
+                <p>Wizard of the Scrying Tower supports Windows 10, 11 & Linux.</p>
             </div>
         </section>
 
@@ -424,6 +458,34 @@
     }
 
     logoElements.forEach(img => img.src = seasonalLogo);
+</script>
+
+<script>
+// Dynamic OS-based download switching
+
+const apprenticeBtn = document.getElementById("download-apprentice");
+const masterBtn = document.getElementById("download-master");
+const osSelector = document.getElementById("os-select");
+
+// Download URLs for each OS
+const links = {
+    windows: {
+        apprentice: "https://github.com/BenF22122/wizardscryer.com/releases/download/WizardAprrentice/WizardInstallerAppren.zip",
+        master: "https://github.com/BenF22122/wizardscryer.com/releases/download/WizardMaster/WizardInstallerMaster.zip"
+    },
+    linux: {
+        apprentice: "https://github.com/BenF22122/wizardscryer.com/releases/download/Wizard-Lunix-Appren/Wizard-Lunix-Appren.zip",
+        master: "https://github.com/BenF22122/wizardscryer.com/releases/download/Wizard-Lunix-Master/Wizard-Lunix.zip"
+    }
+};
+
+// Update links when OS changes
+osSelector.addEventListener("change", () => {
+    const os = osSelector.value;
+
+    apprenticeBtn.href = links[os].apprentice;
+    masterBtn.href = links[os].master;
+});
 </script>
 
 
